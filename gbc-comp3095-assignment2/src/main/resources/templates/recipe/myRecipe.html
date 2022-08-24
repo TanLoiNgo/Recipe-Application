@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<header>
+    <h1>Hello, <span th:remove="tag" th:text="${user.lastName +' '+ user.firstName}"></span></h1>
+</header>
+<nav id="nav-3">
+    <a class="link-3" id="active" th:href="@{/profile}" >Profile</a>
+    <a class="link-3" th:href="@{/recipes}">Recipes</a>
+    <a class="link-3" th:href="@{/mealList}">Plan Meal</a>
+    <a class="link-3" th:href="@{/logout}">Log out</a>
+</nav>
+<body>
+<div class="container text-center" id="container-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <a class="fav-btn" href="/myŚhoppingList">View Shopping List</a>
+            </div>
+            <div class="col-sm">
+                <a class="fav-btn" href="/myRecipe">View My Recipe</a>
+            </div>
+            <div class="col-sm">
+                <a class="fav-btn" href="/myFavoriteRecipe">View My Favorite Recipes</a>
+            </div>
+            <div class="col-sm">
+                <a class="fav-btn"  th:href="@{/mealList}">View My Event Plans</a>
+            </div>
+        </div>
+    </div>
+
+    <h1>My Recipes</h1>
+    <table class="table table-hover">
+        <thead class="table-info">
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Instruction</th>
+            <th scope="col">Cooking time</th>
+            <th scope="col">Ingredients</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="recipe: ${recipes}">
+            <td th:text="${recipe.title}"></td>
+            <td th:text="${recipe.instruction}"></td>
+            <td th:text="${recipe.cookTime}"></td>
+            <td><a class=" fav-btn" th:href="@{'/recipes/' + ${recipe.id} + '/detail'}">Detail</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

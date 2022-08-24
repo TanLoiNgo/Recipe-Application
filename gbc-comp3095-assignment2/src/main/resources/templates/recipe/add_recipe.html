@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Recipe</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery-3.6.0.js"></script>
+    <script src="/js/add_recipe.js"></script>
+</head>
+<nav id="nav-3">
+    <a class="link-3" href="/profile">Profile</a>
+    <a class="link-3" th:href="@{/recipes}">Recipes</a>
+    <a class="link-3" th:href="@{/mealList}">Plan Meal</a>
+    <a class="link-3" th:href="@{/logout}">Log out</a>
+</nav>
+<body>
+<form th:action="@{/addRecipe}" method="post" th:object="${recipe}">
+    <div id="container-box">
+        <h1> Add a new recipe</h1>
+        <div>
+            <label for="Title" class="floatLabel">Title</label>
+            <input id="Title" name="Title" th:field="*{title}" type="text" required>
+        </div>
+        <div>
+            <label for="Cooktime" class="floatLabel">Cook Time</label>
+            <input id="Cooktime" name="Cooktime" th:field="*{cookTime}" type="text" required>
+        </div>
+        <div>
+            <label for="Instruction" class="floatLabel">Instruction</label>
+            <textarea id="Instruction" name="Instruction" th:field="*{instruction}" required></textarea>
+
+            <h1>Add Ingredients</h1>
+            <button id="btn-add-ingredient" type="button">Click to Add more ingredient</button>
+
+            <table class="table table-hover" id="ingredient-table">
+                <thead class="table-info">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody id="ingredient-body"></tbody>
+            </table>
+        </div>
+
+        <div>
+            <button type="submit">Add</button>
+        </div>
+    </div>
+</form>
+<script>
+    $(document).ready(function () {
+        $(document).on("click", "#btn-add-ingredient", function () {
+            const nextNumberOfIngredients = $("#ingredient-body tr").length;
+            const ingredientTemplate =
+                `<tr>
+        <td>
+          <input id="ingredients${nextNumberOfIngredients}.name"
+                 name="ingredients[${nextNumberOfIngredients}].name"
+                 required/>
+        </td>
+        <td>
+          <input id="ingredients${nextNumberOfIngredients}.amount"
+                 name="ingredients[${nextNumberOfIngredients}].amount"
+                  required/>
+        </td>
+        <td>
+          <button id="btn-remove-ingredient" type="button">Remove</button>
+        </td>
+      </tr>`;
+
+            $("#ingredient-table").append(ingredientTemplate);
+        });
+
+        $(document).on("click", "#btn-remove-ingredient", function (e) {
+            $(this).parents("tr").remove();
+        });
+    });
+</script>
+</body>
+</html>

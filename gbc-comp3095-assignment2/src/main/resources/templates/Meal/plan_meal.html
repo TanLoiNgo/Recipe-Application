@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Plan Meal</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<nav id="nav-3">
+    <a class="link-3" href="/profile">Profile</a>
+    <a class="link-3" th:href="@{/recipes}">Recipes</a>
+    <a class="link-3" th:href="@{/mealList}">Plan Meal</a>
+    <a class="link-3" th:href="@{/logout}">Log out</a>
+</nav>
+<body>
+<form th:action="@{/addMeal}" method="post" th:object="${meals}">
+    <div id="container-box">
+        <h1> Add new event plan</h1>
+        <div>
+            <label for="Title" class="floatLabel">Title</label>
+            <input id="Title" name="Title" th:field="*{title}" type="text" required>
+        </div>
+        <div>
+            <label for="Description" class="floatLabel">Description</label>
+            <input id="Description" name="Description" th:field="*{description}" type="text" required>
+        </div>
+        <div>
+            <label for="Date" class="floatLabel">Date</label>
+            <input id="Date" name="Date" th:field="*{datetime}" placeholder="MM/DD/YYYY" type="text" required>
+        </div>
+
+        <div>
+            <button type="submit">Add</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>
+

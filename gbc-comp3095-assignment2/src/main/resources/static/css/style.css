@@ -1,0 +1,235 @@
+body {
+    background: #e5afc3;
+    font-family: "Verdana Geneva", sans-serif;
+    height: 100vh;
+
+}
+
+#container-box {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    width: 100%;
+    padding: 30px;
+    margin: 70px auto 0px auto;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 400;
+    appearance: none;
+    outline: 0;
+    border: 1px solid;
+    padding: 10px 15px;
+    border-radius: 3px;
+    width: 250px;
+    cursor: pointer;
+    font-size: 18px;
+    transition-duration: 0.25s;
+    color: #ea88ab;
+}
+
+a:hover {
+    background-color: rgb(245, 247, 249);
+}
+
+
+h1 {
+    color: #299cbe;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+    margin: 40px 8px 50px 8px;
+}
+
+header {
+    text-align: center;
+}
+
+form input {
+    display: block;
+    box-sizing: border-box;
+    width: 500px;
+    outline: none;
+    margin: 0px auto;
+    background: #e8c0cf;
+    border: 1px solid #dbdbdb;
+    font-size: 1.6em;
+    padding: .8em .5em;
+    border-radius: 2px;
+    height: 50px;
+}
+
+form textarea {
+    display: block;
+    box-sizing: border-box;
+    width: 500px;
+    height: 200px;
+    outline: none;
+    margin: 0px auto;
+    background: #e8c0cf;
+    border: 1px solid #dbdbdb;
+    font-size: 1.6em;
+    padding: .8em .5em;
+    border-radius: 2px;
+}
+
+form button {
+    background: #fff;
+    text-decoration: none;
+    font-weight: 400;
+    appearance: none;
+    outline: 0;
+    border: 1px solid;
+    padding: 10px 15px;
+    width: 250px;
+    cursor: pointer;
+    transition-duration: 0.25s;
+    margin: 30px auto;
+    border-radius: 2px;
+    color: #299cbe;
+    display: block;
+    font-size: 1.5em;
+    line-height: 1.6em;
+    outline: none;
+}
+
+form button:hover {
+    background-color: #f6d6e2;
+}
+
+form Label {
+    position: relative;
+    left: -110px;
+    top: 10px;
+    color: #999;
+    font-size: 23px;
+    padding: 5px 15px;
+    font-weight: 400;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+form .floatLabel {
+    top: 4px;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+}
+
+#nav-3 {
+    margin: 10px 0px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    background: #fff;
+}
+
+.link-3 {
+    transition: 0.4s;
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 20px;
+    margin: 0px;
+    width: 20%;
+    background: #299cbe;
+}
+
+.link-3:hover {
+    background-color: #ffffff;
+    color: #299cbe;
+    padding: 24px 10px;
+}
+
+nav #active {
+    background: #1d809d;
+}
+
+.table-light {
+    background: #cef5f1;
+}
+
+.add_button {
+    padding: 10px 15px;
+    border-radius: 3px;
+    width: 250px;
+    cursor: pointer;
+    font-size: 18px;
+    transition-duration: 0.25s;
+    color: #e93a77;
+}
+
+.add_button :hover {
+    background-color: #e93a77;
+    color: white;
+    border: #e93a77;
+}
+
+#search input {
+    height: 40px;
+    font-size: 1em;
+    background: #ffffff;
+    border: 1px solid #e93a7777;
+    color: #e93a77;
+}
+
+#search input::placeholder {
+    color: #e93a77;
+}
+
+#search button {
+    background: #299cbe;
+    text-decoration: none;
+    font-weight: 400;
+    appearance: none;
+    outline: 0;
+    border: 1px solid;
+    padding: 5px 20px;
+    width: initial;
+    cursor: pointer;
+    transition-duration: 0.25s;
+    margin: 30px auto;
+    border-radius: 2px;
+    border: #299cbe;
+    color: #ffffff;
+    display: block;
+    font-size: 1em;
+    outline: none;
+}
+
+#search button :hover {
+    background-color: #f6d6e2;
+}
+
+.fav-btn {
+    font-weight: 600;
+    outline: 0;
+    border: 2px solid;
+    padding: 5px 10px !important;
+    border-radius: 3px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 14px !important;
+    transition-duration: 0.25s;
+
+}
+
+.red-color {
+    color: red;
+    font-size: 48px;
+
+}
+
+.no-color {
+    color: red;
+    font-size: 48px;
+}
+
+.table table-hover a {
+    border: white;
+
+}

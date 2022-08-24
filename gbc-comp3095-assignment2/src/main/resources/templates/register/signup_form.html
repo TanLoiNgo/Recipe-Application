@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<form th:action="@{/process_register}" method="post" th:object="${user}">
+    <div id="container-box">
+        <h1> Registration </h1>
+        <div>
+            <label for="Account" class="floatLabel">Account</label>
+            <input id="Account" name="Account" th:field="*{account}" type="text" required>
+        </div>
+        <div>
+            <label for="Password" class="floatLabel">Password</label>
+            <input id="Password" name="Password" th:field="*{password}" type="password" required>
+        </div>
+        <div>
+            <label for="Email" class="floatLabel">Email</label>
+            <input id="Email" name="Email" th:field="*{email}" type="email" required>
+        </div>
+        <div>
+            <label for="Firstname" class="floatLabel">First Name</label>
+            <input id="Firstname" name="Firstname" th:field="*{firstName}" type="text" required>
+        </div>
+        <div>
+            <label for="Lastname" class="floatLabel">Last Name</label>
+            <input id="Lastname" name="Lastname" th:field="*{lastName}" type="text" required>
+        </div>
+        <div>
+            <button type="submit">Sign up</button>
+        </div>
+        <div>
+
+        </div>
+    </div>
+</form>
+</body>
+</html>

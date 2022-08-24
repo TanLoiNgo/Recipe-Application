@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Lists</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<nav id="nav-3">
+    <a class="link-3" href="/profile">Profile</a>
+    <a class="link-3" th:href="@{/recipes}" id="active">Recipes</a>
+    <a class="link-3" th:href="@{/mealList}">Plan Meal</a>
+    <a class="link-3" th:href="@{/logout}">Log out</a>
+</nav>
+<body>
+<div class="container text-center" id="container-box">
+    <form th:action="@{/saveRecipe}" method="post" th:object="${recipe}">
+        <h1>Recipe detail</h1>
+        <input type="hidden" th:field="${recipe.id}"/>
+        <table class="table table-hover">
+            <tr>
+                <th class="table-info">Title</th>
+                <td class="table-light" th:text="*{title}"></td>
+            </tr>
+            <tr>
+                <th class="table-info">Cooking Time:</th>
+                <td class="table-light" th:text="*{cookTime}"></td>
+            </tr>
+            <tr>
+                <th class="table-info">Instruction</th>
+                <td class="table-light" th:text="*{instruction}"></td>
+            </tr>
+        </table>
+
+        <h1>Ingredient detail</h1>
+
+        <table class="table table-hover">
+            <thead class="table-info">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Amount</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:unless="${currentUserId == recipe.users.id}" th:each="ingredient: ${recipe.ingredients}">
+                <td th:text="${ingredient.name}"></td>
+                <td th:text="${ingredient.amount}"></td>
+                <td>
+                    <a class="fav-btn" th:href="@{'/ingredients/' + ${ingredient.id} + '/addShoppingList'}">Add to
+                        shopping
+                        list</a>
+                </td>
+            </tr>
+            <tr th:if="${currentUserId == recipe.users.id}" th:each="ingredient, status: ${recipe.ingredients}">
+                <td>
+                    <input type="hidden" th:field="*{ingredients[__${status.index}__].id}"/>
+                    <input class="form-control" th:field="*{ingredients[__${status.index}__].name}"/>
+                </td>
+                <td><input class="form-control" th:field="*{ingredients[__${status.index}__].amount}"/></td>
+                <td>
+                    <!--                    <span th:text="${ingredient.id}"></span>-->
+                    <a id="btn-remove-ingredient" class="fav-btn"
+                       th:href="@{'/ingredients/' + ${ingredient.id} + '/remove'}">Remove</a>
+                </td>
+                <td>
+                    <a class="fav-btn" th:href="@{'/ingredients/' + ${ingredient.id} + '/addShoppingList'}">Add to shopping list</a>
+                </td>
+                <!--        <td>-->
+                <!--          <a class="fav-btn" th:unless="nếu tồn tại trong shopping list" th:href="@{'/ingredients/' + ${ingredient.id} + '/addShoppingList'}">Add to shopping-->
+                <!--            list</a></td>-->
+            </tr>
+            </tbody>
+        </table>
+        <button th:if="${currentUserId == recipe.users.id}" type="submit">Save</button>
+    </form>
+</div>
+</body>
+</html>

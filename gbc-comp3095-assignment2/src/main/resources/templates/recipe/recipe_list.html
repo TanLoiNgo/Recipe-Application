@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Lists</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<nav id="nav-3">
+    <a class="link-3" href="/profile">Profile</a>
+    <a class="link-3" th:href="@{/recipes}" id="active">Recipes</a>
+    <a class="link-3" th:href="@{/mealList}">Plan Meal</a>
+    <a class="link-3" th:href="@{/logout}">Log out</a>
+</nav>
+<body>
+<div class="container text-center" id="container-box">
+    <h1><a class="add_button" th:href="@{/addRecipe}">Add New Recipe</a></h1>
+    <div>
+        <form id="search" method="GET" th:action="@{/recipes}" class="center">
+            <input name="keyword" placeholder="Search Recipe..."/>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <table class="table table-hover">
+        <thead class="table-info">
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Instruction</th>
+            <th scope="col">Cooking Time</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="recipe: ${recipes}">
+            <td th:text="${recipe.title}"></td>
+            <td th:text="${recipe.instruction}"></td>
+            <td th:text="${recipe.cookTime}"></td>
+            <td th:with="recipeId=${recipe.id}">
+                <a class=" fav-btn fa fa-heart red-color" th:href="@{'/recipes/' + ${recipeId} + '/removeFavorite'}"
+                   th:if="${T(ca.gbc.comp3095.gbccomp3095assignment1.helpers.FavoriteHelper).contains(recipe.favorites, currentUserId, recipeId)}">
+                </a>
+                <a class="fav-btn fa fa-heart-o" th:href="@{'/recipes/' + ${recipeId} + '/addFavorite'}"
+                   th:unless="${T(ca.gbc.comp3095.gbccomp3095assignment1.helpers.FavoriteHelper).contains(recipe.favorites, currentUserId, recipeId)}">
+                </a>
+            </td>
+            <td><a class=" fav-btn" th:href="@{'/recipes/' + ${recipe.id} + '/detail'}">Detail</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container text-center" id="container-box">
+    <h1>Sign in</h1>
+    <form th:action="@{/login}" method="POST">
+        <input id="Email" name="email" type="text" required placeholder="Please enter Email" value="tester@georgebrown.ca">
+        <input id="Password" name="password" type="password" required placeholder="Please enter Password" value="admin123">
+        <button type="submit">Log in</button>
+    </form>
+    <h3><a th:href="@{/}">Home page</a></h3>
+</div>
+</body>
+</html>

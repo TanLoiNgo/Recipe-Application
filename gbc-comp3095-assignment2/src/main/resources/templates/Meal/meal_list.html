@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Meal List</title>
+</head>
+</header>
+<nav id="nav-3">
+    <a class="link-3" href="/profile">Profile</a>
+    <a class="link-3" th:href="@{/recipes}">Recipes</a>
+    <a class="link-3" id="active" th:href="@{/meals}">Plan Meal</a>
+    <a class="link-3" th:href="@{/logout}">Log out</a>
+</nav>
+<body>
+
+<div class="container text-center" id="container-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <a class="fav-btn" href="/myŚhoppingList">View Shopping List</a>
+            </div>
+            <div class="col-sm">
+                <a class="fav-btn" href="/myRecipe">View My Recipe</a>
+            </div>
+            <div class="col-sm">
+                <a class="fav-btn" href="/myFavoriteRecipe">View My Favorite Recipes</a>
+            </div>
+            <div class="col-sm">
+                <a class="fav-btn" th:href="@{/mealList}">View My Event Plans</a>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <h1 class="text-center "><a th:href="@{/addMeal}">Add New Event Plan</a></h1>
+    </div>
+    <h1>My Event Plans</h1>
+    <form th:action="@{/saveMeals}" method="post" th:object="${updateMealRequest}">
+        <table class="table table-hover">
+            <thead class="table-info">
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Date</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="meal, status: ${updateMealRequest.meals}">
+                <td>
+                    <input type="hidden" th:field="*{meals[__${status.index}__].id}"/>
+                    <input class="form-control" th:field="*{meals[__${status.index}__].title}"/>
+                </td>
+                <td>
+                    <input class="form-control" th:field="*{meals[__${status.index}__].description}"/>
+                </td>
+                <td th:text="${meal.datetime}"></td>
+                <td>
+                    <a class="fav-btn" th:href="@{'/meals/' + ${meal.id} + '/remove'}">Delete Events</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit">Update Event</button>
+    </form>
+</div>
+
+</body>
+</html>
+
